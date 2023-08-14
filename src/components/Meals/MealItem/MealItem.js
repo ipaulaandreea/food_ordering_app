@@ -1,9 +1,19 @@
-import react from 'react' 
+import react, { useState, useContext } from 'react' 
 import { Fragment } from 'react';
 import classes from './MealItem.module.css';
 import Card from '../../UI/Card/Card';
+import MealItemForm from '../MealItemForm/MealItemForm';
 
 const MealItem=(props)=>{
+
+    const [addingToCart, setAddingToCart]=useState('false')
+    const submitHandler=(enteredOrderItem)=>{
+        const orderData={
+            ...enteredOrderItem
+        }
+        props.onAddToCart(enteredOrderItem); 
+
+    }
     return (
         <li className={classes['meal']}>
             <div> 
@@ -11,7 +21,7 @@ const MealItem=(props)=>{
                 <div className={classes['description']}>{props.description}</div>
                 <div className={classes['price']}>${props.price}</div>
             </div>
-            <div></div>
+            <div><MealItemForm onSubmit={submitHandler} /></div>
         </li>
     )
 }

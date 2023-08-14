@@ -38,6 +38,7 @@ const AvailableMeals = props => {
     <ul className={classes['ul']}>
         {DUMMY_MEALS.map((meal)=> (<li>
             <MealItem
+            id={meal.id}
             key={meal.id}
             name={meal.name}
             description={meal.description}
