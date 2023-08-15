@@ -2,7 +2,7 @@ import classes from './CartItem.module.css';
 import { useState, useContext } from 'react';
 
 const CartItem = (props) => {
-
+  const price= `${props.price.toFixed(2)} `
   // const price = `$${props.price.toFixed(2)}`;
 
   return (
