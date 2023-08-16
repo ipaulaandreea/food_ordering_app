@@ -10,14 +10,15 @@ const Cart = props => {
   const cartCtx = useContext(CartContext)
   const items = cartCtx.cartItems
   const hasItems = items.length > 0
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 
 
   const cartItemAddHandler=(item)=>{
-
+    cartCtx.addItem({...item, amount:1});
   }
 
   const cartItemRemoveHandler=(id)=>{
-
+    cartCtx.removeItem(id);
   }
   return (
     <Modal onClose={props.onHideCart}>
@@ -37,7 +38,7 @@ const Cart = props => {
       </ul>
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>${cartCtx.cartAmount}</span>
+        <span>{totalAmount}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onHideCart}>
